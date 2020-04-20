@@ -1,4 +1,4 @@
-package autocomplete;
+package Autocomplete;
 
 public class Term {
 	
