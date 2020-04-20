@@ -50,7 +50,23 @@ public class Term {
 
 	// Compares the two terms in lexicographic order,
 	// but using only the first k characters of each query.
-	public static Comparator<Term> byPrefixOrder(int k);
+	public static Comparator<Term> byPrefixOrder(int k){
+		Comparator<Term> com = new Comparator<Term>() {
+			public int compare(Term term1, Term term2) {
+				String term1K = term1.query.substring(0, k);
+				String term2K = term2.query.substring(0, k);
+				if(term1K.compareToIgnoreCase(term2K) < 0) {
+					return 1;
+				}
+				else {
+					return -1;
+				}
+			}
+			
+		}; 
+			
+		return com;
+	}
 
 	// Returns a string representation of this term in the following format:
 	// the weight, followed by whitespace, followed by the query.
