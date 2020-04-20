@@ -1,6 +1,7 @@
 package Autocomplete;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 public class Term {
 	
@@ -9,8 +10,11 @@ public class Term {
 
 	// Initializes a term with the given query string and weight.
 	public Term(String query, long weight) {
-		this.query = query;
-		this.weight = weight;
+		if (weight < 0) {
+            throw new IllegalArgumentException();
+		}
+		this.query = Objects.requireNonNull(query);
+		this.weight = Objects.requireNonNull(weight);
 	}
 
 	// Compares the two terms in lexicographic order by query.
@@ -51,8 +55,12 @@ public class Term {
 	// Compares the two terms in lexicographic order,
 	// but using only the first k characters of each query.
 	public static Comparator<Term> byPrefixOrder(int k){
+		if (k < 0) {
+            throw new IllegalArgumentException();
+		}
 		Comparator<Term> com = new Comparator<Term>() {
 			public int compare(Term term1, Term term2) {
+				// Kan nog skippa att declarera Stringsen för bättre prestanda
 				String term1K = term1.query.substring(0, k);
 				String term2K = term2.query.substring(0, k);
 				if(term1K.compareToIgnoreCase(term2K) < 0) {
