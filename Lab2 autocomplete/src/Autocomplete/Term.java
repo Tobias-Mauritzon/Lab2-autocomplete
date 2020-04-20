@@ -15,10 +15,9 @@ public class Term {
 
 	// Compares the two terms in lexicographic order by query.
 	public static Comparator<Term> byLexicographicOrder(){
-		// Detta är fel
 		Comparator<Term> com = new Comparator<Term>() {
 			public int compare(Term term1, Term term2) {
-				if(term1.weight > term2.weight) {
+				if(term1.query.compareToIgnoreCase(term2.query) < 0) {
 					return 1;
 				}
 				else {
