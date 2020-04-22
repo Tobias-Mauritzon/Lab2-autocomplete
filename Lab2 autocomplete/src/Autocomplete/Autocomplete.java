@@ -12,16 +12,25 @@ public class Autocomplete {
 
     // Returns all terms that start with the given prefix, in descending order of weight.
     // Complexity: O(log N + M log M), where M is the number of matching terms
-    public Term[] allMatches(String prefix) {
+    public Term[] allMatches(String prefix){
     	Term term = new Term(prefix, 0);
     	int firstIndex = RangeBinarySearch.firstIndexOf(terms, term, term.byLexicographicOrder());
     	int lastIndex = RangeBinarySearch.lastIndexOf(terms, term, term.byLexicographicOrder());
     	
-    	int length = firstIndex - lastIndex;
+    	//Checka om last first samma
+    	//Om man inte får tillbaka något
+    	int length = lastIndex - firstIndex;
     	
-    	Term[] retTerms; 
+    	Term[] retTerms = new Term[length];
     	
-    	return null;
+    	int i = 0;
+    	while(firstIndex <= lastIndex) {
+    		retTerms[i] = terms[firstIndex];
+    		i++;
+    		firstIndex++;
+    	}
+    	
+    	return retTerms;
     }
 
     // Returns the number of terms that start with the given prefix.
