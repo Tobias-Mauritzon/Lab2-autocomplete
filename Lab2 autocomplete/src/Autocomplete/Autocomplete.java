@@ -1,6 +1,6 @@
 package Autocomplete;
 
-import java.util.LinkedList;
+import java.util.Arrays;
 
 public class Autocomplete {
 	Term[] terms;
@@ -14,8 +14,8 @@ public class Autocomplete {
     // Complexity: O(log N + M log M), where M is the number of matching terms
     public Term[] allMatches(String prefix){
     	Term term = new Term(prefix, 0);
-    	int firstIndex = RangeBinarySearch.firstIndexOf(terms, term, term.byLexicographicOrder());
-    	int lastIndex = RangeBinarySearch.lastIndexOf(terms, term, term.byLexicographicOrder());
+    	int firstIndex = RangeBinarySearch.firstIndexOf(terms, term, Term.byPrefixOrder(prefix.length()));
+    	int lastIndex = RangeBinarySearch.lastIndexOf(terms, term, Term.byPrefixOrder(prefix.length()));
     	
     	//Checka om last first samma
     	//Om man inte får tillbaka något
@@ -29,11 +29,13 @@ public class Autocomplete {
     		i++;
     		firstIndex++;
     	}
-    	
+    	Arrays.sort(retTerms, Term.byReverseWeightOrder());
     	return retTerms;
     }
 
     // Returns the number of terms that start with the given prefix.
     // Complexity: O(log N)
-    public int numberOfMatches(String prefix)
+    public int numberOfMatches(String prefix) {
+    	return 0;
+    }
 }
