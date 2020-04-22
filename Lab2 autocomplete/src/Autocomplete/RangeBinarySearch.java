@@ -14,6 +14,7 @@ public class RangeBinarySearch {
 
 		int low = 0;
 		int high = a.length - 1;
+		int index = -1;
 
 		while (low <= high) {
 			int mid = (low + high) / 2;
@@ -21,15 +22,16 @@ public class RangeBinarySearch {
 			int cmp = comparator.compare(key, midVal);
 			if (cmp < 0) {
 				low = mid + 1;
-			}
-			else if (cmp > 0) {
+			} else if (cmp > 0) {
+				high = mid - 1;
+			} else if (cmp == 0) {
+				if (index > mid) {
+					index = mid;
+				}
 				high = mid - 1;
 			}
-			else
-				return mid; // key found
 		}
-		return -1; // key not found.
-
+		return index; // key not found.
 	}
 
 	// Returns the index of the last key in a[] that equals the search key, or -1 if
@@ -53,13 +55,13 @@ public class RangeBinarySearch {
 				low = mid + 1;
 			} else if (cmp > 0) {
 				high = mid - 1;
-			} else if (cmp == 0)
+			} else if (cmp == 0) {
 				if (index < mid) {
 					index = mid;
 				}
-			low = mid + 1;
+				low = mid + 1;
+			}		
 		}
 		return index; // key not found.
-
 	}
 }
