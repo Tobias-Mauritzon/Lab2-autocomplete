@@ -24,8 +24,11 @@ public class Term {
 				if(term1.query.compareToIgnoreCase(term2.query) < 0) {
 					return 1;
 				}
-				else {
+				else if(term1.query.compareToIgnoreCase(term2.query) > 0){
 					return -1;
+				}
+				else {
+					return 0;
 				}
 			}
 			
@@ -42,8 +45,11 @@ public class Term {
 				if(term1.weight > term2.weight) {
 					return 1;
 				}
-				else {
+				else if (term1.weight < term2.weight){
 					return -1;
+				}
+				else {
+					return 0;
 				}
 			}
 			
@@ -66,8 +72,11 @@ public class Term {
 				if(term1K.compareToIgnoreCase(term2K) < 0) {
 					return 1;
 				}
-				else {
+				else if(term1K.compareToIgnoreCase(term2K) > 0){
 					return -1;
+				}
+				else {
+					return 0;
 				}
 			}
 			

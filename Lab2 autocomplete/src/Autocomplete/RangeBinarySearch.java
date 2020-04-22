@@ -23,9 +23,7 @@ public class RangeBinarySearch {
     			else
     				return mid; // key found
     		}
-    		return -1;  // key not found.
-    	
-    	
+    		return -1;  // key not found.	
     }
 
     // Returns the index of the last key in a[] that equals the search key, or -1 if no such key exists.
