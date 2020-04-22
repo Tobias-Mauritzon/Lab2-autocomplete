@@ -42,6 +42,7 @@ public class RangeBinarySearch {
 	
 			int low = 0;
 			int high = a.length - 1;
+			int index = -1;
 			
 			while (low <= high) {
 				int mid = (low + high) /2;
@@ -51,10 +52,12 @@ public class RangeBinarySearch {
 					low = mid + 1;
 				else if (cmp > 0)
 					high = mid - 1;
-				else
-					return mid; // key found
+				else if(cmp == 0) 
+					if(index < mid)
+					//return mid; // key found
+					index = mid;
 			}
-			return -(low + 1);  // key not found.
+			return index;  // key not found.
 		
 		
 	}
