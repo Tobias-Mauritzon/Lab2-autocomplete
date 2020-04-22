@@ -1,6 +1,5 @@
 package Autocomplete;
 
-import java.util.Arrays;
 import java.util.Comparator;
 
 public class RangeBinarySearch {
@@ -9,25 +8,27 @@ public class RangeBinarySearch {
 	// Complexity: O(log N), N = a.length.
 	// @pre a is sorted.
 	public static <Key> int firstIndexOf(Key[] a, Key key, Comparator<Key> comparator) {
-		if(a == null || key == null || comparator == null) {
+		if (a == null || key == null || comparator == null) {
 			throw new IllegalArgumentException();
-		}		
-		
+		}
+
 		int low = 0;
 		int high = a.length - 1;
-		
+
 		while (low <= high) {
-			int mid = (low + high) /2;
+			int mid = (low + high) / 2;
 			Key midVal = a[mid];
 			int cmp = comparator.compare(key, midVal);
-			if (cmp < 0)
+			if (cmp < 0) {
 				low = mid + 1;
-			else if (cmp > 0)
+			}
+			else if (cmp > 0) {
 				high = mid - 1;
+			}
 			else
 				return mid; // key found
 		}
-		return -1;  // key not found.
+		return -1; // key not found.
 
 	}
 
@@ -36,30 +37,29 @@ public class RangeBinarySearch {
 	// Complexity: O(log N), N = a.length
 	// @pre a is sorted.
 	public static <Key> int lastIndexOf(Key[] a, Key key, Comparator<Key> comparator) {
-		if(a == null || key == null || comparator == null) {
+		if (a == null || key == null || comparator == null) {
 			throw new IllegalArgumentException();
 		}
-	
-			int low = 0;
-			int high = a.length - 1;
-			int index = -1;
-			
-			while (low <= high) {
-				int mid = (low + high) /2;
-				Key midVal = a[mid];
-				int cmp = comparator.compare(key, midVal);
-				if (cmp < 0)
-					low = mid + 1;
-				else if (cmp > 0)
-					high = mid - 1;
-				else if(cmp == 0) 
-					if(index < mid){
+
+		int low = 0;
+		int high = a.length - 1;
+		int index = -1;
+
+		while (low <= high) {
+			int mid = (low + high) / 2;
+			Key midVal = a[mid];
+			int cmp = comparator.compare(key, midVal);
+			if (cmp < 0) {
+				low = mid + 1;
+			} else if (cmp > 0) {
+				high = mid - 1;
+			} else if (cmp == 0)
+				if (index < mid) {
 					index = mid;
-					}
-					low = mid + 1;
-			}
-			return index;  // key not found.
-		
-		
+				}
+			low = mid + 1;
+		}
+		return index; // key not found.
+
 	}
 }

@@ -68,10 +68,10 @@ public class Term {
 			public int compare(Term term1, Term term2) {
 				// Kan nog skippa att declarera Stringsen för bättre prestanda
 				int index = k;
-				if(index > term1.query.length() || index > term2.query.length()) {
-					if(term1.query.length() >= term2.query.length()) {
+				if (index > term1.query.length() || index > term2.query.length()) {
+					if (term1.query.length() >= term2.query.length()) {
 						index = term2.query.length();
-					}else {
+					} else {
 						index = term1.query.length();
 					}
 				}
@@ -85,7 +85,6 @@ public class Term {
 					return 0;
 				}
 			}
-
 		};
 
 		return com;
