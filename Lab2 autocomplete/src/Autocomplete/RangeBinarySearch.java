@@ -53,9 +53,10 @@ public class RangeBinarySearch {
 				else if (cmp > 0)
 					high = mid - 1;
 				else if(cmp == 0) 
-					if(index < mid)
-					//return mid; // key found
+					if(index < mid){
 					index = mid;
+					}
+					low = mid + 1;
 			}
 			return index;  // key not found.
 		
