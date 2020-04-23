@@ -70,11 +70,16 @@ public class Autocomplete {
 		
 		Term term = new Term(prefix, 0);
 		int firstIndex = RangeBinarySearch.firstIndexOf(terms, term, Term.byPrefixOrder(prefix.length()));
-		int lastIndex = RangeBinarySearch.lastIndexOf(terms, term, Term.byPrefixOrder(prefix.length()));
-		if (firstIndex < 0 || lastIndex < 0) {
+		if(firstIndex < 0) {
 			return 0;
-		} else {
+		}
+		else {
+			int lastIndex = RangeBinarySearch.lastIndexOf(terms, term, Term.byPrefixOrder(prefix.length()));
+			if (firstIndex == lastIndex) {
+				return 1;
+			} else {
 			return lastIndex - firstIndex;
+			}
 		}
 	}
 }
