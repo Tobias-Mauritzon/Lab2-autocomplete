@@ -44,7 +44,7 @@ public class Term {
 		// decending order?
 		Comparator<Term> com = new Comparator<Term>() {
 			public int compare(Term term1, Term term2) {
-				if (term1.weight > term2.weight) {
+				if (term1.weight < term2.weight) {
 					return 1;
 				} else if (term1.weight < term2.weight) {
 					return -1;
@@ -68,11 +68,10 @@ public class Term {
 			public int compare(Term term1, Term term2) {
 				// Kan nog skippa att declarera Stringsen för bättre prestanda
 				int index = k;
-				if (index > term2.query.length()) {
-					if (term1.query.length() >= term2.query.length()) {
-						index = term2.query.length();
-					}
+				if(term1.query.length() < index) {
+					return -1;
 				}
+				
 				String term1K = term1.query.substring(0, index);
 				String term2K = term2.query.substring(0, index);
 				if (term1K.compareToIgnoreCase(term2K) > 0) {
