@@ -26,14 +26,15 @@ public class Autocomplete {
 	// weight.
 	// Complexity: O(log N + M log M), where M is the number of matching terms
 	public Term[] allMatches(String prefix) {
-		
 		if(prefix == null) {
 			throw new NullPointerException();
 		}
 		Term term = new Term(prefix, 0);
 		int firstIndex = RangeBinarySearch.firstIndexOf(terms, term, Term.byPrefixOrder(prefix.length()));
+		//System.out.println(firstIndex);
 		
 		if(firstIndex >= 0) {
+			
 			int lastIndex = RangeBinarySearch.lastIndexOf(terms, term, Term.byPrefixOrder(prefix.length()));
 
 			if(firstIndex == lastIndex) {
@@ -43,11 +44,10 @@ public class Autocomplete {
 				return retTerms;
 			}else {
 				int length = lastIndex - firstIndex;
-
 				Term[] retTerms = new Term[length];
 
 				int i = 0;
-				while (firstIndex <= lastIndex) {
+				while (firstIndex < lastIndex) {
 					retTerms[i] = terms[firstIndex];
 					i++;
 					firstIndex++;

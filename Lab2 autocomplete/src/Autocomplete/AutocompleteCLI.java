@@ -27,9 +27,11 @@ class AutocompleteCLI {
     public static void main(String[] args) {
         try {
             // Read the command-line arguments
-            String dictfile = args[0];
-            int max_matches = Integer.parseInt(args[1]);
+//            String dictfile = args[0];
+//            int max_matches = Integer.parseInt(args[1]);
 
+            String dictfile = "C:\\Users\\Jocke\\git\\Lab2-autocomplete\\Lab2 autocomplete\\src\\Files\\dictionaries\\nordsamiska.txt";
+            int max_matches = 10;
             // Read the dictionary file using Java 8 streams, see e.g.:
             // https://www.mkyong.com/java8/java-8-how-to-convert-a-stream-to-array/
             Term[] dictionary = Files.lines(Paths.get(dictfile))

@@ -25,9 +25,9 @@ public class Term {
 	public static Comparator<Term> byLexicographicOrder() {
 		Comparator<Term> com = new Comparator<Term>() {
 			public int compare(Term term1, Term term2) {
-				if (term1.query.compareToIgnoreCase(term2.query) < 0) {
+				if (term1.query.compareToIgnoreCase(term2.query) > 0) {
 					return 1;
-				} else if (term1.query.compareToIgnoreCase(term2.query) > 0) {
+				} else if (term1.query.compareToIgnoreCase(term2.query) < 0) {
 					return -1;
 				} else {
 					return 0;
@@ -77,9 +77,9 @@ public class Term {
 				}
 				String term1K = term1.query.substring(0, index - 1);
 				String term2K = term2.query.substring(0, index - 1);
-				if (term1K.compareToIgnoreCase(term2K) < 0) {
+				if (term1K.compareToIgnoreCase(term2K) > 0) {
 					return 1;
-				} else if (term1K.compareToIgnoreCase(term2K) > 0) {
+				} else if (term1K.compareToIgnoreCase(term2K) < 0) {
 					return -1;
 				} else {
 					return 0;

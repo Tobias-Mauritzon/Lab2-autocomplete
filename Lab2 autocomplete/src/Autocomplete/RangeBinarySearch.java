@@ -19,15 +19,13 @@ public class RangeBinarySearch {
 		while (low <= high) {
 			int mid = (low + high) / 2;
 			Key midVal = a[mid];
-			int cmp = comparator.compare(key, midVal);
+			int cmp = comparator.compare(midVal, key);
 			if (cmp < 0) {
 				low = mid + 1;
 			} else if (cmp > 0) {
 				high = mid - 1;
 			} else if (cmp == 0) {
-				if (index > mid) {
-					index = mid;
-				}
+				index = mid;
 				high = mid - 1;
 			}
 		}
@@ -50,15 +48,13 @@ public class RangeBinarySearch {
 		while (low <= high) {
 			int mid = (low + high) / 2;
 			Key midVal = a[mid];
-			int cmp = comparator.compare(key, midVal);
+			int cmp = comparator.compare(midVal, key);
 			if (cmp < 0) {
 				low = mid + 1;
 			} else if (cmp > 0) {
 				high = mid - 1;
 			} else if (cmp == 0) {
-				if (index < mid) {
-					index = mid;
-				}
+				index = mid;
 				low = mid + 1;
 			}		
 		}
