@@ -9,7 +9,7 @@ public class RangeBinarySearch {
 	// @pre a is sorted.
 	public static <Key> int firstIndexOf(Key[] a, Key key, Comparator<Key> comparator) {
 		if (a == null || key == null || comparator == null) {
-			throw new IllegalArgumentException();
+			throw new NullPointerException();
 		}
 
 		int low = 0;
@@ -38,7 +38,7 @@ public class RangeBinarySearch {
 	// @pre a is sorted.
 	public static <Key> int lastIndexOf(Key[] a, Key key, Comparator<Key> comparator) {
 		if (a == null || key == null || comparator == null) {
-			throw new IllegalArgumentException();
+			throw new NullPointerException();
 		}
 
 		int low = 0;
