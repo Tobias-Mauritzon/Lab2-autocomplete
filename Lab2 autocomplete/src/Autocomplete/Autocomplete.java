@@ -8,18 +8,6 @@ public class Autocomplete {
 	// Initializes the data structure from the given array of terms.
 	// Complexity: O(N log N), where N is the number of terms
 	public Autocomplete(Term[] terms) {
-//		if(terms == null) {
-//			throw new NullPointerException();
-//		}
-//		for(Term term : terms) {
-//			if(term == null) {
-//				throw new NullPointerException();
-//			}
-//		}
-//		
-//		Arrays.sort(terms, Term.byLexicographicOrder());
-//		
-//		this.terms = terms;
 
 		try {
 			Arrays.sort(terms, Term.byLexicographicOrder());
